@@ -25,7 +25,7 @@ public class Estudiante implements Runnable {
     public void run() {
         while (true) {
             // Coge libros
-            Libro[] libros = gestorLibros.tomarLibros();
+            Libro[] libros = gestorLibros.tomarLibros(id);
             System.out.println("El estudiante " + id + " tomo los libros " + libros[0].getId() + " y " + libros[1].getId());
 
           
@@ -34,10 +34,11 @@ public class Estudiante implements Runnable {
                 Thread.sleep(tiempoUso * 1000); 
             } catch (InterruptedException e) {
                 e.printStackTrace();
+               
             }
 
             
-            gestorLibros.devolverLibros(libros);
+            gestorLibros.devolverLibros(libros, id);
             System.out.println("El estudiante " + id + " devolvio los libros " + libros[0].getId() + " y " + libros[1].getId());
 
             // Descanso
